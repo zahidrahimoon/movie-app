@@ -1,193 +1,54 @@
-Here’s how the ER diagram translates into database tables for a movie booking system:
+# **CineMaze: Online Movie Booking System**
 
-### 1. **Movies Table**
+### **Project Overview**
+CineMaze is a comprehensive web-based platform that simplifies the process of booking movie tickets online. It provides users with a seamless experience where they can browse movies, watch trailers, read reviews, select showtimes, and book tickets from various seating classes. CineMaze features both an **Admin Panel** and **User Interface**, along with secure authentication for both roles, ensuring a smooth and secure booking process.
 
-| Column Name     | Data Type   | Constraints         |
-|-----------------|-------------|---------------------|
-| Movie_ID        | INT         | PRIMARY KEY         |
-| Title           | VARCHAR(255)| NOT NULL            |
-| Genre           | VARCHAR(100)| NOT NULL            |
-| Release_Date    | DATE        | NOT NULL            |
-| Thumbnail_Image | VARCHAR(255)| NOT NULL            |
-| Hover_Video     | VARCHAR(255)|                     |
-| Duration        | TIME        | NOT NULL            |
-| Description     | TEXT        |                     |
+---
 
-### 2. **Users Table**
+### **Technologies Used**
+- **Laravel 11**: Powers the backend, managing routes, controllers, and database interactions for tasks like user authentication and movie bookings.
+- **Tailwind CSS**: Provides responsive, modern, and sleek UI design for both the user and admin interfaces, ensuring an optimized experience across all devices.
+- **MySQL**: Acts as the database to store crucial information such as user profiles, movies, bookings, and administrative data.
 
-| Column Name     | Data Type   | Constraints         |
-|-----------------|-------------|---------------------|
-| User_ID         | INT         | PRIMARY KEY         |
-| Username        | VARCHAR(100)| NOT NULL, UNIQUE    |
-| Email           | VARCHAR(100)| NOT NULL, UNIQUE    |
-| Password        | VARCHAR(255)| NOT NULL            |
+---
 
-### 3. **Ratings Table**
+### **Key Features**
+- **Admin Panel**: Manage movies, users, and bookings.
+- **User Dashboard**: Book tickets, view booking history, browse movies, and update profiles.
+- **Authentication**: Secure login for both users and administrators.
+- **Responsive UI**: Built using Tailwind CSS for optimal user experience across all devices.
 
-| Column Name     | Data Type   | Constraints         |
-|-----------------|-------------|---------------------|
-| Rating_ID       | INT         | PRIMARY KEY         |
-| User_ID         | INT         | FOREIGN KEY (Users)  |
-| Movie_ID        | INT         | FOREIGN KEY (Movies) |
-| Rating_Percentage| DECIMAL(5,2)|                     |
-| Review          | TEXT        |                     |
+---
 
-### 4. **Showtimes Table**
+### **Problem Statements**
+1. Long queues for movie tickets at theaters.
+2. Lack of a centralized platform for exploring movie trailers, reviews, and showtimes.
+3. Complex management of theaters, movies, and showtimes for administrators.
+4. Inconsistent user experience across different devices.
+5. Manual seat selection and booking process.
+6. Limited control over user bookings and administrative tasks.
+7. Insecure authentication for users and admins.
 
-| Column Name     | Data Type   | Constraints         |
-|-----------------|-------------|---------------------|
-| Showtime_ID     | INT         | PRIMARY KEY         |
-| Movie_ID        | INT         | FOREIGN KEY (Movies) |
-| Date            | DATE        | NOT NULL            |
-| Start_Time      | TIME        | NOT NULL            |
-| End_Time        | TIME        | NOT NULL            |
-| Available_Seats | INT         | NOT NULL            |
+### **Solutions**
+1. **Online Booking System**: Users can book tickets online, avoiding queues.
+2. **Centralized Movie Information**: CineMaze provides movie details, trailers, reviews, and showtimes in one place.
+3. **Admin Panel**: Administrators can easily manage movie listings, theaters, and showtimes.
+4. **Responsive Design**: Tailwind CSS ensures the UI is accessible across all devices.
+5. **Streamlined Booking Process**: Users can easily select showtimes and seats.
+6. **Comprehensive Admin Control**: Admins have full control over user management and bookings.
+7. **Secure Authentication**: Robust login and password reset functionality for users and admins.
 
-### 5. **Bookings Table**
+---
 
-| Column Name     | Data Type   | Constraints         |
-|-----------------|-------------|---------------------|
-| Booking_ID      | INT         | PRIMARY KEY         |
-| User_ID         | INT         | FOREIGN KEY (Users)  |
-| Showtime_ID     | INT         | FOREIGN KEY (Showtimes) |
-| Number_Of_Seats | INT         | NOT NULL            |
-| Payment_Status  | VARCHAR(50) | NOT NULL            |
+### **Team Members**
+1. Muhammad Zahid - Lead Developer
+2. Muhamad Sajid
+3. Hassam-Ud-Din Khan
+4. Syed Abdul Kabeer
+5. Shayan Ahmed Chohan
+6. Muhammad Shariyaar
 
-### Relationships:
-1. **Movies and Showtimes**: One-to-Many (A movie can have multiple showtimes).
-2. **Users and Ratings**: One-to-Many (A user can give multiple ratings, but each rating is for one movie).
-3. **Users and Bookings**: One-to-Many (A user can make multiple bookings for different showtimes). 
+---
 
-This structure represents the relationships and key attributes of the system. Each table connects via foreign keys where appropriate, and it is optimized for data integrity and normalization.
-
-
-
-
-
-
-
-
-
-
-
-To achieve your goal of displaying three separate components (`Trending`, `Recommendation`, and `Most Watched`) based on the `category` column in your `MovieCard` model, you can follow these steps:
-
-### Step 1: Create Three Separate Blade Components
-You can create three Blade components, each for the respective categories (`Trending`, `Recommendation`, and `Most Watched`).
-
-#### TrendingComponent
-```php
-<!-- resources/views/components/trending-movies.blade.php -->
-<div class="container mx-auto px-4 py-12">
-    <h1 class="text-3xl text-center mb-8 text-white font-bold">Trending Movies</h1>
-    
-    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-5">
-        @foreach($trending_movies as $movie)
-            @include('components.movie-card', ['movie' => $movie])
-        @endforeach
-    </div>
-</div>
-```
-
-#### RecommendationComponent
-```php
-<!-- resources/views/components/recommendation-movies.blade.php -->
-<div class="container mx-auto px-4 py-12">
-    <h1 class="text-3xl text-center mb-8 text-white font-bold">Recommended Movies</h1>
-
-    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-5">
-        @foreach($recommended_movies as $movie)
-            @include('components.movie-card', ['movie' => $movie])
-        @endforeach
-    </div>
-</div>
-```
-
-#### MostWatchedComponent
-```php
-<!-- resources/views/components/most-watched-movies.blade.php -->
-<div class="container mx-auto px-4 py-12">
-    <h1 class="text-3xl text-center mb-8 text-white font-bold">Most Watched Movies</h1>
-
-    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-5">
-        @foreach($most_watched_movies as $movie)
-            @include('components.movie-card', ['movie' => $movie])
-        @endforeach
-    </div>
-</div>
-```
-
-### Step 2: Create a MovieCard Blade Component
-You can use a reusable Blade component for displaying each movie's card.
-
-```php
-<!-- resources/views/components/movie-card.blade.php -->
-<div class="w-full cursor-pointer group">
-    <div class="relative aspect-[2/3] mb-3 overflow-hidden rounded-lg shadow-md">
-        <img src="{{ $movie->image }}" alt="{{ $movie->title }}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-        
-        <!-- Hover Overlay and other features from your existing code -->
-        <!-- ... -->
-        
-        <!-- Rating Circle (This part remains the same) -->
-        <div class="absolute -bottom-7 left-3 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gray-900 rounded-full flex items-center justify-center text-xs sm:text-sm md:text-base font-bold z-10 transform -translate-y-1/2">
-            <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                <circle cx="18" cy="18" r="16" fill="none" stroke="#3d3d3d" stroke-width="2"></circle>
-                <circle cx="18" cy="18" r="16" fill="none" 
-                        stroke="{{ $movie->vote_average >= 8 ? '#21d07a' : ($movie->vote_average >= 4 ? '#d2d531' : '#db2360') }}" 
-                        stroke-width="2" 
-                        stroke-dasharray="100" 
-                        stroke-dashoffset="{{ 100 - ($movie->vote_average * 10) }}">
-                </circle>
-            </svg>
-            <span class="absolute text-white text-xs sm:text-sm md:text-base">{{ number_format($movie->vote_average, 1) }}</span>
-        </div>
-    </div>
-    <div class="text-white mt-4">
-        <h3 class="text-lg font-medium mb-1 line-clamp-1">{{ $movie->title }}</h3>
-        <p class="text-lg text-gray-400">{{ \Carbon\Carbon::parse($movie->release_date)->format('M d, Y') }}</p>
-    </div>
-</div>
-```
-
-### Step 3: Update the MovieController
-In your `MovieController`, you will now query movies based on the `category` field and pass them to each of the three components.
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use App\Models\MovieCard;
-use Illuminate\Http\Request;
-
-class MovieController extends Controller
-{
-    public function index()
-    {
-        // Fetch movies based on their category
-        $trending_movies = MovieCard::where('category', 'Trending')->get();
-        $recommended_movies = MovieCard::where('category', 'Recommendation')->get();
-        $most_watched_movies = MovieCard::where('category', 'Most Watched')->get();
-        
-        return view('movies.index', compact('trending_movies', 'recommended_movies', 'most_watched_movies'));
-    }
-}
-```
-
-### Step 4: Create the Main Blade View
-Finally, create the main view that will display the three sections for Trending, Recommended, and Most Watched movies.
-
-```php
-<!-- resources/views/movies/index.blade.php -->
-@extends('layouts.app')
-
-@section('content')
-    <x-trending-movies :trending-movies="$trending_movies" />
-    <x-recommendation-movies :recommended-movies="$recommended_movies" />
-    <x-most-watched-movies :most-watched-movies="$most_watched_movies" />
-@endsection
-```
-
-### Conclusion
-This setup will display three separate movie sections (`Trending`, `Recommendation`, and `Most Watched`), each filtered by its respective category. Each section uses its Blade component, making it easy to maintain and extend.
+### **Conclusion**
+CineMaze revolutionizes the movie ticket booking experience by combining powerful backend management tools with a user-friendly frontend interface. From browsing showtimes to booking securely, CineMaze simplifies every aspect of movie ticket booking for both users and admins.

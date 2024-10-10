@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all(); // Fetch all users
-        return view('user.index', compact('users')); // Return users to view
+        return view('admins.user.index', compact('users')); // Correct the view path
     }
 
     // Delete a user
@@ -20,7 +20,7 @@ class UserController extends Controller
         $user = User::findOrFail($id); // Find the user
         $user->delete(); // Delete the user
 
-        return redirect()->route('user')->with('success', 'User deleted successfully');
+        return redirect()->route('user.index')->with('success', 'User deleted successfully'); // Redirect to user listing
     }
 
     // Grant admin access to a user
@@ -30,6 +30,6 @@ class UserController extends Controller
         $user->is_admin = true; // Make the user an admin
         $user->save(); // Save changes
 
-        return redirect()->route('user')->with('success', 'Admin access granted');
+        return redirect()->route('user.index')->with('success', 'Admin access granted'); // Redirect to user listing
     }
 }

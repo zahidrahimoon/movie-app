@@ -52,14 +52,6 @@
                         <i class="fas fa-lock absolute left-3 top-1/2 mt-3 transform -translate-y-1/2 text-gray-400 dark:text-gray-500"></i>
                     </div>
 
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-start">
-                            <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-500 dark:ring-offset-gray-800">
-                            <label for="remember" class="ml-3 text-sm text-gray-500 dark:text-gray-300">Remember me</label>
-                        </div>
-                        <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
-                    </div>
-
                     <button type="submit" class="w-full text-white bg-green-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
 
                     <p class="text-sm font-light text-gray-500 dark:text-gray-400">

@@ -73,28 +73,29 @@ class AuthController extends Controller
     {
         // Get the current authenticated user
         $user = auth()->user();
-
+    
         // Validate the form input
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
         ]);
-
+    
         // Update user's profile information
         $user->name = $request->name;
         $user->email = $request->email;
-
+    
         // Check if the password field is filled and update the password
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }
-
+    
         // Save the updated user data
         $user->save();
-
+    
         // Redirect back with success message
         return redirect()->back()->with('success', 'Profile updated successfully');
     }
+    
 }
 ?>
