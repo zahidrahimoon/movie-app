@@ -3,6 +3,17 @@
 ### **Project Overview**
 CineMaze is a comprehensive web-based platform that simplifies the process of booking movie tickets online. It provides users with a seamless experience where they can browse movies, watch trailers, read reviews, select showtimes, and book tickets from various seating classes. CineMaze features both an **Admin Panel** and **User Interface**, along with secure authentication for both roles, ensuring a smooth and secure booking process.
 
+![demo](https://github.com/zahidrahimoon/movie-app/blob/master/screenshots/1.PNG)
+![demo](https://github.com/zahidrahimoon/movie-app/blob/master/screenshots/2.PNG)
+![demo](https://github.com/zahidrahimoon/movie-app/blob/master/screenshots/3.PNG)
+![demo](https://github.com/zahidrahimoon/movie-app/blob/master/screenshots/4.PNG)
+![demo](https://github.com/zahidrahimoon/movie-app/blob/master/screenshots/5.PNG)
+![demo](https://github.com/zahidrahimoon/movie-app/blob/master/screenshots/6.PNG)
+![demo](https://github.com/zahidrahimoon/movie-app/blob/master/screenshots/7.PNG)
+![demo](https://github.com/zahidrahimoon/movie-app/blob/master/screenshots/8.PNG)
+![demo](https://github.com/zahidrahimoon/movie-app/blob/master/screenshots/9.PNG)
+![demo](https://github.com/zahidrahimoon/movie-app/blob/master/screenshots/10.PNG)
+
 ---
 
 ### **Technologies Used**
@@ -17,36 +28,6 @@ CineMaze is a comprehensive web-based platform that simplifies the process of bo
 - **User Dashboard**: Book tickets, view booking history, browse movies, and update profiles.
 - **Authentication**: Secure login for both users and administrators.
 - **Responsive UI**: Built using Tailwind CSS for optimal user experience across all devices.
-
----
-
-### **Problem Statements**
-1. Long queues for movie tickets at theaters.
-2. Lack of a centralized platform for exploring movie trailers, reviews, and showtimes.
-3. Complex management of theaters, movies, and showtimes for administrators.
-4. Inconsistent user experience across different devices.
-5. Manual seat selection and booking process.
-6. Limited control over user bookings and administrative tasks.
-7. Insecure authentication for users and admins.
-
-### **Solutions**
-1. **Online Booking System**: Users can book tickets online, avoiding queues.
-2. **Centralized Movie Information**: CineMaze provides movie details, trailers, reviews, and showtimes in one place.
-3. **Admin Panel**: Administrators can easily manage movie listings, theaters, and showtimes.
-4. **Responsive Design**: Tailwind CSS ensures the UI is accessible across all devices.
-5. **Streamlined Booking Process**: Users can easily select showtimes and seats.
-6. **Comprehensive Admin Control**: Admins have full control over user management and bookings.
-7. **Secure Authentication**: Robust login and password reset functionality for users and admins.
-
----
-
-### **Team Members**
-1. Muhammad Zahid - Lead Developer
-2. Muhamad Sajid
-3. Hassam-Ud-Din Khan
-4. Syed Abdul Kabeer
-5. Shayan Ahmed Chohan
-6. Muhammad Shariyaar
 
 ---
 
